@@ -1,0 +1,534 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+- phpMyAdmin XML Dump
+- version 4.8.0.1
+- https://www.phpmyadmin.net
+-
+- Anamakine: 127.0.0.1
+- Üretim Zamanı: 29 Tem 2018, 22:56:35
+- Sunucu sürümü: 10.1.32-MariaDB
+- PHP Sürümü: 7.2.5
+-->
+
+<pma_xml_export version="1.0" xmlns:pma="https://www.phpmyadmin.net/some_doc_url/">
+    <!--
+    - Structure schemas
+    -->
+    <pma:structure_schemas>
+        <pma:database name="db_teknasyon_challange" collation="utf8_general_ci" charset="utf8">
+            <pma:table name="languages">
+                CREATE TABLE `languages` (
+                  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+                  `name` varchar(100) NOT NULL,
+                  `code` varchar(5) NOT NULL,
+                  `status` tinyint(4) NOT NULL,
+                  PRIMARY KEY (`id`),
+                  UNIQUE KEY `languages_code_unique` (`code`)
+                ) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
+            </pma:table>
+            <pma:table name="migrations">
+                CREATE TABLE `migrations` (
+                  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+                  `migration` varchar(255) NOT NULL,
+                  `batch` int(11) NOT NULL,
+                  PRIMARY KEY (`id`)
+                ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+            </pma:table>
+            <pma:table name="password_resets">
+                CREATE TABLE `password_resets` (
+                  `email` varchar(255) NOT NULL,
+                  `token` varchar(255) NOT NULL,
+                  `created_at` timestamp NULL DEFAULT NULL,
+                  KEY `password_resets_email_index` (`email`)
+                ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+            </pma:table>
+            <pma:table name="projects">
+                CREATE TABLE `projects` (
+                  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+                  `name` varchar(100) NOT NULL,
+                  `created_by` int(11) DEFAULT NULL,
+                  `updated_by` int(11) DEFAULT NULL,
+                  `status` tinyint(4) NOT NULL,
+                  `created_at` timestamp NULL DEFAULT NULL,
+                  `updated_at` timestamp NULL DEFAULT NULL,
+                  PRIMARY KEY (`id`),
+                  UNIQUE KEY `projects_name_unique` (`name`)
+                ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+            </pma:table>
+            <pma:table name="project_translation">
+                CREATE TABLE `project_translation` (
+                  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+                  `project_id` int(11) NOT NULL,
+                  `language_id` int(11) NOT NULL,
+                  `version_id` int(11) NOT NULL,
+                  `key` varchar(255) NOT NULL,
+                  `value` varchar(255) NOT NULL,
+                  `created_by` int(11) DEFAULT NULL,
+                  `updated_by` int(11) DEFAULT NULL,
+                  `created_at` timestamp NULL DEFAULT NULL,
+                  `updated_at` timestamp NULL DEFAULT NULL,
+                  PRIMARY KEY (`id`)
+                ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+            </pma:table>
+            <pma:table name="users">
+                CREATE TABLE `users` (
+                  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+                  `username` varchar(255) NOT NULL,
+                  `name` varchar(255) NOT NULL,
+                  `surname` varchar(255) NOT NULL,
+                  `email` varchar(255) NOT NULL,
+                  `password` varchar(255) NOT NULL,
+                  `role` tinyint(4) NOT NULL,
+                  `created_by` int(11) DEFAULT NULL,
+                  `updated_by` int(11) DEFAULT NULL,
+                  `last_login_at` datetime DEFAULT NULL,
+                  `last_login_ip` varchar(255) DEFAULT NULL,
+                  `status` tinyint(4) NOT NULL,
+                  `remember_token` varchar(100) DEFAULT NULL,
+                  `created_at` timestamp NULL DEFAULT NULL,
+                  `updated_at` timestamp NULL DEFAULT NULL,
+                  PRIMARY KEY (`id`),
+                  UNIQUE KEY `users_email_unique` (`email`)
+                ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+            </pma:table>
+            <pma:table name="user_log">
+                CREATE TABLE `user_log` (
+                  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+                  `user_id` int(11) NOT NULL,
+                  `time` varchar(255) NOT NULL,
+                  `type` varchar(50) NOT NULL,
+                  `event` varchar(255) NOT NULL,
+                  `created_at` timestamp NULL DEFAULT NULL,
+                  `updated_at` timestamp NULL DEFAULT NULL,
+                  PRIMARY KEY (`id`)
+                ) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
+            </pma:table>
+            <pma:table name="version">
+                CREATE TABLE `version` (
+                  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+                  `name` varchar(5) NOT NULL,
+                  `created_by` int(11) DEFAULT NULL,
+                  `updated_by` int(11) DEFAULT NULL,
+                  `status` tinyint(4) NOT NULL,
+                  `created_at` timestamp NULL DEFAULT NULL,
+                  `updated_at` timestamp NULL DEFAULT NULL,
+                  PRIMARY KEY (`id`),
+                  UNIQUE KEY `version_name_unique` (`name`)
+                ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+            </pma:table>
+        </pma:database>
+    </pma:structure_schemas>
+
+    <!--
+    - Veritabanı: 'db_teknasyon_challange'
+    -->
+    <database name="db_teknasyon_challange">
+        <!-- Tablo languages -->
+        <table name="languages">
+            <column name="id">1</column>
+            <column name="name">Türkçe</column>
+            <column name="code">tr</column>
+            <column name="status">1</column>
+        </table>
+        <table name="languages">
+            <column name="id">2</column>
+            <column name="name">İngilizce</column>
+            <column name="code">en</column>
+            <column name="status">1</column>
+        </table>
+        <table name="languages">
+            <column name="id">3</column>
+            <column name="name">Almanca</column>
+            <column name="code">de</column>
+            <column name="status">1</column>
+        </table>
+        <table name="languages">
+            <column name="id">4</column>
+            <column name="name">Fransızca</column>
+            <column name="code">fr</column>
+            <column name="status">1</column>
+        </table>
+        <table name="languages">
+            <column name="id">5</column>
+            <column name="name">Rusça</column>
+            <column name="code">ru</column>
+            <column name="status">1</column>
+        </table>
+        <table name="languages">
+            <column name="id">6</column>
+            <column name="name">İtalyanca</column>
+            <column name="code">it</column>
+            <column name="status">1</column>
+        </table>
+        <table name="languages">
+            <column name="id">7</column>
+            <column name="name">İspanyolca</column>
+            <column name="code">es</column>
+            <column name="status">1</column>
+        </table>
+        <table name="languages">
+            <column name="id">8</column>
+            <column name="name">Portekizce</column>
+            <column name="code">pt</column>
+            <column name="status">1</column>
+        </table>
+        <table name="languages">
+            <column name="id">9</column>
+            <column name="name">Yunanca</column>
+            <column name="code">el</column>
+            <column name="status">1</column>
+        </table>
+        <table name="languages">
+            <column name="id">10</column>
+            <column name="name">Bulgarca</column>
+            <column name="code">bg</column>
+            <column name="status">1</column>
+        </table>
+        <table name="languages">
+            <column name="id">11</column>
+            <column name="name">Hollandaca</column>
+            <column name="code">nl</column>
+            <column name="status">1</column>
+        </table>
+        <table name="languages">
+            <column name="id">12</column>
+            <column name="name">Romence</column>
+            <column name="code">ro</column>
+            <column name="status">1</column>
+        </table>
+        <table name="languages">
+            <column name="id">13</column>
+            <column name="name">Macarca</column>
+            <column name="code">hu</column>
+            <column name="status">1</column>
+        </table>
+        <table name="languages">
+            <column name="id">14</column>
+            <column name="name">Slovakça</column>
+            <column name="code">sk</column>
+            <column name="status">1</column>
+        </table>
+        <table name="languages">
+            <column name="id">15</column>
+            <column name="name">Arapça</column>
+            <column name="code">ar</column>
+            <column name="status">1</column>
+        </table>
+        <table name="languages">
+            <column name="id">16</column>
+            <column name="name">Slovence</column>
+            <column name="code">sl</column>
+            <column name="status">1</column>
+        </table>
+        <table name="languages">
+            <column name="id">17</column>
+            <column name="name">Çince</column>
+            <column name="code">zh</column>
+            <column name="status">1</column>
+        </table>
+        <table name="languages">
+            <column name="id">18</column>
+            <column name="name">Korece</column>
+            <column name="code">ko</column>
+            <column name="status">1</column>
+        </table>
+        <table name="languages">
+            <column name="id">19</column>
+            <column name="name">Japonca</column>
+            <column name="code">ja</column>
+            <column name="status">1</column>
+        </table>
+        <table name="languages">
+            <column name="id">20</column>
+            <column name="name">Letonca</column>
+            <column name="code">lv</column>
+            <column name="status">1</column>
+        </table>
+        <!-- Tablo migrations -->
+        <table name="migrations">
+            <column name="id">1</column>
+            <column name="migration">2014_10_12_000000_create_users_table</column>
+            <column name="batch">1</column>
+        </table>
+        <table name="migrations">
+            <column name="id">2</column>
+            <column name="migration">2014_10_12_100000_create_password_resets_table</column>
+            <column name="batch">1</column>
+        </table>
+        <table name="migrations">
+            <column name="id">3</column>
+            <column name="migration">2018_07_29_135744_create_user_log_table</column>
+            <column name="batch">2</column>
+        </table>
+        <table name="migrations">
+            <column name="id">4</column>
+            <column name="migration">2018_07_29_165221_create_languages_table</column>
+            <column name="batch">3</column>
+        </table>
+        <table name="migrations">
+            <column name="id">5</column>
+            <column name="migration">2018_07_29_170725_create_version_table</column>
+            <column name="batch">4</column>
+        </table>
+        <table name="migrations">
+            <column name="id">6</column>
+            <column name="migration">2018_07_29_185418_create_projects_table</column>
+            <column name="batch">5</column>
+        </table>
+        <table name="migrations">
+            <column name="id">7</column>
+            <column name="migration">2018_07_29_190204_create_project_translation_table</column>
+            <column name="batch">6</column>
+        </table>
+        <!-- Tablo password_resets -->
+        <!-- Tablo projects -->
+        <table name="projects">
+            <column name="id">1</column>
+            <column name="name">Proje1</column>
+            <column name="created_by">2</column>
+            <column name="updated_by">NULL</column>
+            <column name="status">1</column>
+            <column name="created_at">2018-07-29 19:11:46</column>
+            <column name="updated_at">2018-07-29 19:11:46</column>
+        </table>
+        <!-- Tablo project_translation -->
+        <table name="project_translation">
+            <column name="id">1</column>
+            <column name="project_id">1</column>
+            <column name="language_id">1</column>
+            <column name="version_id">1</column>
+            <column name="key">title</column>
+            <column name="value">Merhaba</column>
+            <column name="created_by">2</column>
+            <column name="updated_by">1</column>
+            <column name="created_at">2018-07-29 20:09:39</column>
+            <column name="updated_at">2018-07-29 20:51:59</column>
+        </table>
+        <!-- Tablo users -->
+        <table name="users">
+            <column name="id">1</column>
+            <column name="username">teknasyon</column>
+            <column name="name">Teknasyon</column>
+            <column name="surname">Yazılım</column>
+            <column name="email">info@teknasyon.com</column>
+            <column name="password">$2y$10$unNMa1UkcPDpV4oYf9aNkO.3kZQYdtsC9X9AeDyWND6fY8k.cGP5.</column>
+            <column name="role">1</column>
+            <column name="created_by">0</column>
+            <column name="updated_by">1</column>
+            <column name="last_login_at">2018-07-29 14:49:05</column>
+            <column name="last_login_ip">::1</column>
+            <column name="status">1</column>
+            <column name="remember_token">NULL</column>
+            <column name="created_at">2018-07-29 14:34:52</column>
+            <column name="updated_at">2018-07-29 14:49:05</column>
+        </table>
+        <table name="users">
+            <column name="id">2</column>
+            <column name="username">ibrahimhalilucan</column>
+            <column name="name">ibrahim halil</column>
+            <column name="surname">uçan</column>
+            <column name="email">ibrahimhalilucan@gmail.com</column>
+            <column name="password">$2y$10$KkB3Ajl9N3jRRpmmSfAwzOAdMWKiZ8J9.BX7gRJznLuxmQIOSHbby</column>
+            <column name="role">0</column>
+            <column name="created_by">1</column>
+            <column name="updated_by">1</column>
+            <column name="last_login_at">2018-07-29 17:14:45</column>
+            <column name="last_login_ip">::1</column>
+            <column name="status">1</column>
+            <column name="remember_token">NULL</column>
+            <column name="created_at">2018-07-29 15:10:28</column>
+            <column name="updated_at">2018-07-29 17:14:45</column>
+        </table>
+        <!-- Tablo user_log -->
+        <table name="user_log">
+            <column name="id">1</column>
+            <column name="user_id">1</column>
+            <column name="time">2018-07-29 14:49:05</column>
+            <column name="type">Güncelleme</column>
+            <column name="event">Kullanıcı Güncellendi</column>
+            <column name="created_at">2018-07-29 14:49:05</column>
+            <column name="updated_at">2018-07-29 14:49:05</column>
+        </table>
+        <table name="user_log">
+            <column name="id">2</column>
+            <column name="user_id">1</column>
+            <column name="time">2018-07-29 14:49:05</column>
+            <column name="type">Login</column>
+            <column name="event">Sistem Girişi Başarılı</column>
+            <column name="created_at">2018-07-29 14:49:05</column>
+            <column name="updated_at">2018-07-29 14:49:05</column>
+        </table>
+        <table name="user_log">
+            <column name="id">3</column>
+            <column name="user_id">1</column>
+            <column name="time">2018-07-29 15:10:28</column>
+            <column name="type">Ekleme</column>
+            <column name="event">Kullanıcı Eklendi</column>
+            <column name="created_at">2018-07-29 15:10:28</column>
+            <column name="updated_at">2018-07-29 15:10:28</column>
+        </table>
+        <table name="user_log">
+            <column name="id">4</column>
+            <column name="user_id">1</column>
+            <column name="time">2018-07-29 15:12:08</column>
+            <column name="type">Güncelleme</column>
+            <column name="event">Kullanıcı Güncellendi</column>
+            <column name="created_at">2018-07-29 15:12:08</column>
+            <column name="updated_at">2018-07-29 15:12:08</column>
+        </table>
+        <table name="user_log">
+            <column name="id">5</column>
+            <column name="user_id">1</column>
+            <column name="time">2018-07-29 15:12:16</column>
+            <column name="type">Güncelleme</column>
+            <column name="event">Kullanıcı Güncellendi</column>
+            <column name="created_at">2018-07-29 15:12:16</column>
+            <column name="updated_at">2018-07-29 15:12:16</column>
+        </table>
+        <table name="user_log">
+            <column name="id">6</column>
+            <column name="user_id">1</column>
+            <column name="time">2018-07-29 17:12:36</column>
+            <column name="type">Ekleme</column>
+            <column name="event">Version Eklendi</column>
+            <column name="created_at">2018-07-29 17:12:36</column>
+            <column name="updated_at">2018-07-29 17:12:36</column>
+        </table>
+        <table name="user_log">
+            <column name="id">7</column>
+            <column name="user_id">2</column>
+            <column name="time">2018-07-29 17:14:45</column>
+            <column name="type">Güncelleme</column>
+            <column name="event">Kullanıcı Güncellendi</column>
+            <column name="created_at">2018-07-29 17:14:45</column>
+            <column name="updated_at">2018-07-29 17:14:45</column>
+        </table>
+        <table name="user_log">
+            <column name="id">8</column>
+            <column name="user_id">2</column>
+            <column name="time">2018-07-29 17:14:45</column>
+            <column name="type">Login</column>
+            <column name="event">Sistem Girişi Başarılı</column>
+            <column name="created_at">2018-07-29 17:14:45</column>
+            <column name="updated_at">2018-07-29 17:14:45</column>
+        </table>
+        <table name="user_log">
+            <column name="id">9</column>
+            <column name="user_id">2</column>
+            <column name="time">2018-07-29 17:15:16</column>
+            <column name="type">Ekleme</column>
+            <column name="event">Version Eklendi</column>
+            <column name="created_at">2018-07-29 17:15:16</column>
+            <column name="updated_at">2018-07-29 17:15:16</column>
+        </table>
+        <table name="user_log">
+            <column name="id">10</column>
+            <column name="user_id">2</column>
+            <column name="time">2018-07-29 17:15:37</column>
+            <column name="type">Ekleme</column>
+            <column name="event">Version Eklendi</column>
+            <column name="created_at">2018-07-29 17:15:37</column>
+            <column name="updated_at">2018-07-29 17:15:37</column>
+        </table>
+        <table name="user_log">
+            <column name="id">11</column>
+            <column name="user_id">2</column>
+            <column name="time">2018-07-29 17:15:49</column>
+            <column name="type">Ekleme</column>
+            <column name="event">Version Eklendi</column>
+            <column name="created_at">2018-07-29 17:15:49</column>
+            <column name="updated_at">2018-07-29 17:15:49</column>
+        </table>
+        <table name="user_log">
+            <column name="id">12</column>
+            <column name="user_id">2</column>
+            <column name="time">2018-07-29 17:15:55</column>
+            <column name="type">Ekleme</column>
+            <column name="event">Version Eklendi</column>
+            <column name="created_at">2018-07-29 17:15:55</column>
+            <column name="updated_at">2018-07-29 17:15:55</column>
+        </table>
+        <table name="user_log">
+            <column name="id">13</column>
+            <column name="user_id">2</column>
+            <column name="time">2018-07-29 19:11:46</column>
+            <column name="type">Ekleme</column>
+            <column name="event">Proje Eklendi</column>
+            <column name="created_at">2018-07-29 19:11:46</column>
+            <column name="updated_at">2018-07-29 19:11:46</column>
+        </table>
+        <table name="user_log">
+            <column name="id">14</column>
+            <column name="user_id">2</column>
+            <column name="time">2018-07-29 20:09:41</column>
+            <column name="type">Ekleme</column>
+            <column name="event">Version Eklendi</column>
+            <column name="created_at">2018-07-29 20:09:41</column>
+            <column name="updated_at">2018-07-29 20:09:41</column>
+        </table>
+        <table name="user_log">
+            <column name="id">15</column>
+            <column name="user_id">2</column>
+            <column name="time">2018-07-29 20:51:53</column>
+            <column name="type">Güncelleme</column>
+            <column name="event">Version Güncellendi</column>
+            <column name="created_at">2018-07-29 20:51:53</column>
+            <column name="updated_at">2018-07-29 20:51:53</column>
+        </table>
+        <table name="user_log">
+            <column name="id">16</column>
+            <column name="user_id">2</column>
+            <column name="time">2018-07-29 20:51:59</column>
+            <column name="type">Güncelleme</column>
+            <column name="event">Version Güncellendi</column>
+            <column name="created_at">2018-07-29 20:51:59</column>
+            <column name="updated_at">2018-07-29 20:51:59</column>
+        </table>
+        <!-- Tablo version -->
+        <table name="version">
+            <column name="id">1</column>
+            <column name="name">v1</column>
+            <column name="created_by">1</column>
+            <column name="updated_by">NULL</column>
+            <column name="status">1</column>
+            <column name="created_at">2018-07-29 17:12:35</column>
+            <column name="updated_at">2018-07-29 17:12:35</column>
+        </table>
+        <table name="version">
+            <column name="id">2</column>
+            <column name="name">v2</column>
+            <column name="created_by">2</column>
+            <column name="updated_by">NULL</column>
+            <column name="status">1</column>
+            <column name="created_at">2018-07-29 17:15:16</column>
+            <column name="updated_at">2018-07-29 17:15:16</column>
+        </table>
+        <table name="version">
+            <column name="id">3</column>
+            <column name="name">v3</column>
+            <column name="created_by">2</column>
+            <column name="updated_by">NULL</column>
+            <column name="status">1</column>
+            <column name="created_at">2018-07-29 17:15:37</column>
+            <column name="updated_at">2018-07-29 17:15:37</column>
+        </table>
+        <table name="version">
+            <column name="id">4</column>
+            <column name="name">v4</column>
+            <column name="created_by">2</column>
+            <column name="updated_by">NULL</column>
+            <column name="status">1</column>
+            <column name="created_at">2018-07-29 17:15:49</column>
+            <column name="updated_at">2018-07-29 17:15:49</column>
+        </table>
+        <table name="version">
+            <column name="id">5</column>
+            <column name="name">v5</column>
+            <column name="created_by">2</column>
+            <column name="updated_by">NULL</column>
+            <column name="status">1</column>
+            <column name="created_at">2018-07-29 17:15:54</column>
+            <column name="updated_at">2018-07-29 17:15:54</column>
+        </table>
+    </database>
+</pma_xml_export>
