@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\User;
 use App\UserLog;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
@@ -17,12 +18,6 @@ class TeknasyonController extends Controller
     }
     public function signin(Request $request) {
 
-        $validator = Validator::make($request->all(), [
-            'username' => 'required',
-            'password' => 'required',
-            'email' => 'required',
-        ]);
-
         $username =$request->input('username');
         $email = $request->input('email');
         $password = $request->input('password');
@@ -32,6 +27,7 @@ class TeknasyonController extends Controller
             $kosul = ['email' => $email];
             $users = User::where($kosul)->first();
             if($users->status == 0){
+                UserLog::log(Auth::user()->id, UserLog::Type_Login, UserLog::Login_Event_Warning);
                 session()->flash('status_danger', trans('teknasyon/alert.status_danger'));
                 return redirect()->back()->withInput();
             }else{
@@ -57,14 +53,15 @@ class TeknasyonController extends Controller
         } else {
             /*
             $user = new User();
-            $user->username = 'teknasyon';
-            $user->name     = 'Teknasyon';
-            $user->surname  = 'Yazılım';
-            $user->email    = 'info@teknasyon.com';
-            $user->password = bcrypt('Teknasyon?Y_S*');
-            $user->status   = 1;
+            $user->username     = 'teknasyon';
+            $user->name         = 'Teknasyon';
+            $user->surname      = 'Yazılım';
+            $user->email        = 'info@teknasyon.com';
+            $user->password     = bcrypt('Teknasyon?Y_S*');
+            $user->status       = 1;
             $user->created_by   = 0;
             $user->updated_by   = 0;
+            $user->role         = 1; // 1 Admin 0 Kullanıcı
             $user->save();
             */
             return view('/login');

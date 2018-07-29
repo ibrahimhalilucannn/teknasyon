@@ -11,12 +11,13 @@ class UserLog extends Model
     const Type_Update = "Güncelleme";
     const Type_Login = "Login";
     const Login_Event_Add = "Kullanıcı Eklendi";
+    const Login_Event_Warning = "Kullanıcı Girişi başarısız";
     const Version_Event_Add = "Version Eklendi";
     const Login_Event_Update = "Kullanıcı Güncellendi";
     const Version_Event_Update = "Version Güncellendi";
     const Login_Event_Login = "Sistem Girişi Başarılı";
 
-    protected $table = 'user_logs';
+    protected $table = 'user_log';
     protected $fillable = [
         'user_id','time', 'type','event'
     ];
