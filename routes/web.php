@@ -13,6 +13,9 @@
 
 Route::group(['middleware' => ['AuthCheck']],function(){
     Route::get('/', 'TeknasyonController@index');
+    Route::get('/users', 'UserController@index');
+    Route::post('/users', 'UserController@user_insert');
+    Route::post('/users/{id}', 'UserController@user_update');
 });
 
 Route::get('/login', 'TeknasyonController@login');
