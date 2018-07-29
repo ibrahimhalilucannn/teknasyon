@@ -105,6 +105,12 @@
                                 <span class="sidenav-label">Projeler</span>
                             </a>
                         </li>
+                        <li class="sidenav-item {{ Request::segment(1) === 'lokalizasyon' ? 'active' : '' }}">
+                            <a href="{{URL::to('lokalizasyon')}}">
+                                <span class="sidenav-icon icon icon-works">&#103;</span>
+                                <span class="sidenav-label">Lokalizasyonlar</span>
+                            </a>
+                        </li>
 
                     </ul>
                 </nav>

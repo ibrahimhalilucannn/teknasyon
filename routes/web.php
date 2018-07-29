@@ -23,6 +23,13 @@ Route::group(['middleware' => ['AuthCheck']],function(){
     Route::post('/versions', 'VersionController@version_insert');
     Route::post('/versions/{id}', 'VersionController@version_update');
 
+    Route::get('/projects', 'ProjectsController@index');
+    Route::post('/projects', 'ProjectsController@projects_insert');
+    Route::post('/projects/{id}', 'ProjectsController@projects_update');
+
+    Route::get('/lokalizasyon', 'ProjectsController@lokalizasyon');
+    Route::post('/lokalizasyon', 'ProjectsController@lokalizasyon_insert');
+    Route::post('/lokalizasyon/{id}', 'ProjectsController@lokalizasyon_update');
 
 });
 

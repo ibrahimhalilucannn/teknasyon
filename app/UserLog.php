@@ -16,6 +16,10 @@ class UserLog extends Model
     const Login_Event_Update = "Kullanıcı Güncellendi";
     const Version_Event_Update = "Version Güncellendi";
     const Login_Event_Login = "Sistem Girişi Başarılı";
+    const Project_Event_Add ="Proje Eklendi";
+    const Project_Event_Update = "Proje Güncellendi";
+    const Translation_Event_Add = "Lokalizasyon Eklendi";
+    const Translation_Event_Update = "Lokalizasyon Güncellendi";
 
     protected $table = 'user_log';
     protected $fillable = [
