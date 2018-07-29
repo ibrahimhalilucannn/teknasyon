@@ -23,6 +23,7 @@ Route::group(['middleware' => ['AuthCheck']],function(){
     Route::post('/versions', 'VersionController@version_insert');
     Route::post('/versions/{id}', 'VersionController@version_update');
 
+
 });
 
 Route::get('/login', 'TeknasyonController@login');

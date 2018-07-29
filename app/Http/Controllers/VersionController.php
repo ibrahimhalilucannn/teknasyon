@@ -12,6 +12,7 @@ class VersionController extends Controller
     {
         $items  = Version::all();
         return view('version',compact('items'));
+
     }
 
     public function version_insert(Request $request)

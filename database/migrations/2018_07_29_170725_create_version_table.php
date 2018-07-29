@@ -15,6 +15,7 @@ class CreateVersionTable extends Migration
             $table->integer('updated_by')->nullable();
             $table->tinyInteger('status');
             $table->timestamps();
+
         });
     }
 

@@ -29,6 +29,7 @@ class Version extends Model
         });
     }
 
+
     public static function rulesCreate()
     {
         return array(

@@ -1,5 +1,6 @@
 @extends('master')
 
+
 @section('content')
     <div class="row gutter-xs">
         <div class="col-md-12 pull-right">
