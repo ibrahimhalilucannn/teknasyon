@@ -11,6 +11,11 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::group(['middleware' => ['AuthCheck']],function(){
+    Route::get('/', 'TeknasyonController@index');
+
 });
+
+Route::get('/login', ['as'=>'login','uses'=>'TeknasyonController@login']);
+Route::post('signin', 'TeknasyonController@signin');
+Route::get('/logout', 'TeknasyonController@logout');
